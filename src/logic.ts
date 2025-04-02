@@ -1,17 +1,24 @@
 type COLOR = "red" | "yellow" | "green";
+interface iColor {
+  RED: COLOR;
+  YELLOW: COLOR;
+  GREEN: COLOR;
+}
+export const staticColor: iColor = { RED: "red", YELLOW: "yellow", GREEN: "green" };
 function handleColor(color: COLOR, setColor: (value: COLOR) => void) {
+  const { RED, YELLOW, GREEN } = staticColor;
   switch (color) {
-    case "red": {
-      setTimeout(() => setColor("red"), 2000);
-      break;
+    case RED: {
+      return setTimeout(() => setColor(RED), 2000);
     }
-    case "yellow": {
-      setTimeout(() => setColor("yellow"), 4000);
-      break;
+    case YELLOW: {
+      return setTimeout(() => setColor(YELLOW), 4000);
     }
-    case "green": {
-      setTimeout(() => setColor("green"), 4000);
-      break;
+    case GREEN: {
+      return setTimeout(() => setColor(GREEN), 4000);
+    }
+    default: {
+      return 0;
     }
   }
 }
